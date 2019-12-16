@@ -18,7 +18,9 @@ import com.adobe.marketing.mobile.Lifecycle;
 import com.adobe.marketing.mobile.LoggingMode;
 import com.adobe.marketing.mobile.MobileCore;
 import com.adobe.marketing.mobile.Signal;
+import com.adobe.marketing.mobile.Target;
 import com.adobe.marketing.mobile.UserProfile;
+import com.adobe.target.mobile.TargetVEC;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         MobileCore.setLogLevel(LoggingMode.DEBUG);
 
         try {
+            TargetVEC.registerExtension();
+            Target.registerExtension();
             UserProfile.registerExtension();
             Identity.registerExtension();
             Lifecycle.registerExtension();
