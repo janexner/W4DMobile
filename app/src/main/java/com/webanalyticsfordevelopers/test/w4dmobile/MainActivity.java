@@ -1,20 +1,14 @@
 package com.webanalyticsfordevelopers.test.w4dmobile;
 
 import android.os.Bundle;
-
-import com.adobe.marketing.mobile.TargetPrefetch;
-import com.adobe.marketing.mobile.TargetRequest;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.webkit.WebView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.webkit.WebView;
-import android.widget.TextView;
 
 import com.adobe.marketing.mobile.AdobeCallback;
 import com.adobe.marketing.mobile.Identity;
@@ -24,7 +18,10 @@ import com.adobe.marketing.mobile.LoggingMode;
 import com.adobe.marketing.mobile.MobileCore;
 import com.adobe.marketing.mobile.Signal;
 import com.adobe.marketing.mobile.Target;
+import com.adobe.marketing.mobile.TargetRequest;
 import com.adobe.marketing.mobile.UserProfile;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
