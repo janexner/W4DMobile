@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">W4DMobile</string>
     <string name="action_settings">Settings</string>
-    <string name="default_text">Default Text</string>
+    <string name="close_settings">Close</string>
 </resources>
