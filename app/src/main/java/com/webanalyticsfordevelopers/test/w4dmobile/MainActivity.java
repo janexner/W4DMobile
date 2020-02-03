@@ -3,7 +3,7 @@ package com.webanalyticsfordevelopers.test.w4dmobile;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.adobe.marketing.mobile.TargetPrefetch;
+import com.adobe.marketing.mobile.Analytics;
 import com.adobe.marketing.mobile.TargetRequest;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -33,7 +33,9 @@ import org.json.JSONObject;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         MobileCore.setLogLevel(LoggingMode.DEBUG);
 
         try {
+            Analytics.registerExtension();
             Target.registerExtension();
             UserProfile.registerExtension();
             Identity.registerExtension();
@@ -60,6 +63,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_main);
+
+        // create contextData map
+        Map<String,String> contextData = new HashMap<>();
+        // add language = en
+        contextData.put("language", "en");
+        MobileCore.trackState("Home", contextData);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -67,6 +77,9 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
+                // track this into Analytics
+                MobileCore.trackAction("Targeting Button tapped", null);
+                // now over to Target
                 Snackbar.make(view, "Creating Target request...", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                 TargetRequest targetRequest1 = new TargetRequest("w4dmobile-targeting1", null
@@ -137,5 +150,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        MobileCore.setApplication(getApplication());
+        MobileCore.lifecycleStart(null);
+    }
+
+    @Override
+    public void onPause() {
+        MobileCore.lifecyclePause();
+        super.onPause();
     }
 }
