@@ -1,6 +1,7 @@
 package com.webanalyticsfordevelopers.test.w4dmobile;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.adobe.marketing.mobile.Analytics;
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // create contextData map
-        Map<String,String> contextData = new HashMap<>();
+        Map<String, String> contextData = new HashMap<>();
         // add language = en
         contextData.put("language", "en");
         MobileCore.trackState("Home", contextData);
@@ -126,6 +127,10 @@ public class MainActivity extends AppCompatActivity {
                 Target.retrieveLocationContent(requests, null);
             }
         });
+        // ATTENTION: This was auto-generated to handle app links.
+        Intent appLinkIntent = getIntent();
+        String appLinkAction = appLinkIntent.getAction();
+        Uri appLinkData = appLinkIntent.getData();
     }
 
     @Override
