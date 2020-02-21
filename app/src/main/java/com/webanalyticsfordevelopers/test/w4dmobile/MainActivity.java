@@ -5,6 +5,9 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import com.adobe.marketing.mobile.Analytics;
+import com.adobe.marketing.mobile.Griffon;
+import com.adobe.marketing.mobile.Places;
+import com.adobe.marketing.mobile.PlacesMonitor;
 import com.adobe.marketing.mobile.TargetRequest;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -47,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
         MobileCore.setLogLevel(LoggingMode.DEBUG);
 
         try {
+            Griffon.registerExtension();
+            Places.registerExtension();
+            PlacesMonitor.registerExtension();
             Analytics.registerExtension();
             Target.registerExtension();
             UserProfile.registerExtension();
